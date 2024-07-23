@@ -215,7 +215,7 @@
                     } else {
                         this.products.sort((a, b) => a.id - b.id);
                     }
-                },
+                }4,
 
                 handleSearch() {
                     const searchTerm = this.searchTerm.toLowerCase();
@@ -240,3 +240,23 @@
                     this.cart.push(product);
                     localStorage.setItem('cart', JSON.stringify(this.cart));
                 },
+                viewProductDetails(product) {
+                    this.selectedProduct = product;
+                    this.showModal = true;
+                },
+    
+                init() {
+                    this.fetchProducts();
+                }
+            };
+        }
+    
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', () => {
+            productApp().init();
+        });
+    </script>
+    
+</body>
+
+</html>
