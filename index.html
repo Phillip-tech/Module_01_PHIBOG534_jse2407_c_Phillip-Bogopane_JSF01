@@ -217,4 +217,8 @@
                     }
                 },
 
-                
+                handleSearch() {
+                    const searchTerm = this.searchTerm.toLowerCase();
+                    this.products = this.products.filter(product => product.title.toLowerCase().includes(searchTerm));
+                    this.filterProducts();
+                },
