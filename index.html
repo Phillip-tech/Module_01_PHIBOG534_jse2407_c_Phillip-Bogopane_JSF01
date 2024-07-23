@@ -7,3 +7,47 @@
     <title>SwiftCart</title>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+
+    <style>
+        /* Your custom styles here */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .card {
+            width: 200px;
+            height: 300px;
+            margin: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .card-skeleton {
+            background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        .heart-icon {
+            transition: color 0.3s ease;
+        }
+
+        .heart-icon.active {
+            color: maroon;
+        }
+    </style>
+
+</head>
