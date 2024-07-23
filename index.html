@@ -176,3 +176,16 @@
                 loading: true,
                 showModal: false,
                 selectedProduct: null,
+
+                fetchProducts() {
+                    this.loading = true;
+                    fetch('https://fakestoreapi.com/products')
+                        .then(response => response.json())
+                        .then(data => {
+                            this.products = data;
+                            this.loading = false;
+                            this.populateCategories();
+                            this.filterProducts();
+                        });
+                },
+    
