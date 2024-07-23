@@ -7,7 +7,6 @@
     <title>SwiftCart</title>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
-
     <style>
         /* Your custom styles here */
         .card-container {
@@ -29,6 +28,9 @@
             background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
             background-size: 200% 100%;
             animation: shimmer 1.5s infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         @keyframes shimmer {
@@ -49,7 +51,6 @@
             color: maroon;
         }
     </style>
-
 </head>
 
 <body class="bg-gray-100">
@@ -61,48 +62,45 @@
                     <img src="online-shop.png" class="h-8" alt="SwiftCart Logo">
                     <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">SwiftCart</span>
                 </a>
-
                 <button @click="navbarOpen = !navbarOpen"
-                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden">
-                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15"></path>
-                </svg>
-               </button>
-
-               <div :class="navbarOpen ? 'block' : 'hidden'" class="w-full md:block md:w-auto">
-                <ul class="flex flex-col top-10 font-medium p-4 mt-4 border border-gray-100 rounded-lg bg-gray-500 md:space-x-8 md:flex-row md:mt-0">
-                    <li><a href="#" class="block py-2 px-3 text-white rounded hover:bg-gray-100">Wishlist</a></li>
-                    <li class="relative">
-                        <a href="#" class="block py-2 px-3 text-white rounded hover:bg-gray-100">Cart</a>
-                        <span class="absolute top-0 left-3 -mt-2 -ml-2 flex h-2 w-2 items-center justify-center rounded-full bg-red-500 p-3 text-xs text-white">2</span>
-                    </li>
-                    <li><a href="#" class="block py-2 px-3 text-white rounded hover:bg-gray-100">Login</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
- <!-- Main Content -->
- <main class="container mx-auto py-8" x-data="productApp()">
-
-    <!-- Search, Filter, and Sort -->
-    <div class="flex justify-between items-center mt-4">
-        <form @submit.prevent="handleSearch" class="relative w-full max-w-sm flex items-center">
-            <div class="relative">
-                <input type="search" name="searchInput" x-model="searchTerm"
-                    class="p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Search products...">
-                <button type="submit"
-                    class="absolute top-0 right-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                            d="M19 19l-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden">
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15"></path>
                     </svg>
-                    <span class="sr-only">Search</span>
                 </button>
+                <div :class="navbarOpen ? 'block' : 'hidden'" class="w-full md:block md:w-auto">
+                    <ul class="flex flex-col top-10 font-medium p-4 mt-4 border border-gray-100 rounded-lg bg-gray-500 md:space-x-8 md:flex-row md:mt-0">
+                        <li><a href="#" class="block py-2 px-3 text-white rounded hover:bg-gray-100">Wishlist</a></li>
+                        <li class="relative">
+                            <a href="#" class="block py-2 px-3 text-white rounded hover:bg-gray-100">Cart</a>
+                            <span class="absolute top-0 left-3 -mt-2 -ml-2 flex h-2 w-2 items-center justify-center rounded-full bg-red-500 p-3 text-xs text-white">2</span>
+                        </li>
+                        <li><a href="#" class="block py-2 px-3 text-white rounded hover:bg-gray-100">Login</a></li>
+                    </ul>
+                </div>
             </div>
-            <select x-model="filterItem" @change="fetchProducts"
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto py-8" x-data="productApp()">
+        <!-- Search, Filter, and Sort -->
+        <div class="flex justify-between items-center mt-4">
+            <form @submit.prevent="handleSearch" class="relative w-full max-w-sm flex items-center">
+                <div class="relative">
+                    <input type="search" name="searchInput" x-model="searchTerm"
+                        class="p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="Search products...">
+                    <button type="submit"
+                        class="absolute top-0 right-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
+                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                d="M19 19l-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                        </svg>
+                        <span class="sr-only">Search</span>
+                    </button>
+                </div>
+                <select x-model="filterItem" @change="fetchProducts"
                     class="p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
                     <option value="All categories">All categories</option>
                     <template x-for="category in categories" :key="category">
@@ -110,7 +108,6 @@
                     </template>
                 </select>
             </form>
-
             <div class="flex space-x-4">
                 <select x-model="sortOrder" @change="sortProducts"
                     class="p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
@@ -120,11 +117,16 @@
                 </select>
             </div>
         </div>
-
+        <!-- Product List -->
         <div class="grid justify-center mt-4">
             <div class="lg:max-h-[130rem] max-w-xl mx-auto grid gap-4 grid-cols-1 lg:grid-cols-4 md:grid-cols-2 items-center lg:max-w-none my-4">
                 <template x-if="loading">
-                    <div class="card-skeleton w-full h-64 rounded-lg"></div>
+                    <div class="card-skeleton w-full h-64 rounded-lg flex items-center justify-center text-center">
+                        <svg class="animate-spin h-15 w-15 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V2.83a1 1 0 011.7-.71l6 6a1 1 0 010 1.42l-6 6a1 1 0 01-1.41-1.42L11 13.41V20a1 1 0 01-2 0v-7.59l-2.29 2.3a1 1 0 01-1.42-1.42l4-4a1 1 0 011.42 0z"></path>
+                        </svg>
+                    </div>
                 </template>
                 <template x-for="product in products" :key="product.id">
                     <div @click="viewProductDetails(product)" class="cursor-pointer bg-white p-4 rounded-lg shadow hover:shadow-lg">
@@ -138,7 +140,7 @@
                                     <path d="M12 .587l3.668 7.4368.198 1.192-5.916 5.754 1.396 8.131L12 18.896l-7.346 3.864 1.396-8.131-5.916-5.754 8.198-1.192z"/>
                                 </svg>
                             </template>
-                        </div>    
+                        </div>
                         <p class="mt-1 text-gray-500" x-text="`$${product.price}`"></p>
                         <p class="mt-1 text-sm text-gray-500" x-text="product.category"></p>
                         <div class="flex justify-between items-center mt-2">
@@ -154,6 +156,40 @@
             </div>
         </div>
 
+        <!-- Product Modal -->
+        <div x-show="showModal" x-cloak x-on:click.self="showModal = false"
+            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+            <div class="bg-white rounded-lg p-6 max-w-md w-full relative">
+                <button @click="showModal = false"
+                    class="absolute top-2 right-2 text-gray-400 hover:text-gray-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                <div class="w-full h-48 overflow-hidden rounded">
+                    <img :src="selectedProduct?.image" alt="product image" class="w-full h-full object-contain">
+                </div>
+                <h3 class="mt-2 text-lg font-semibold text-gray-700" x-text="selectedProduct?.title"></h3>
+                <div class="flex items-center mt-1">
+                    <template x-for="star in 5">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" :class="{'text-yellow-500': selectedProduct?.rating.rate >= star, 'text-gray-300': selectedProduct?.rating.rate < star}" class="w-4 h-4">
+                            <path d="M12 .587l3.668 7.4368.198 1.192-5.916 5.754 1.396 8.131L12 18.896l-7.346 3.864 1.396-8.131-5.916-5.754 8.198-1.192z"/>
+                        </svg>
+                    </template>
+                </div>
+                <p class="mt-1 text-gray-500" x-text="`$${selectedProduct?.price}`"></p>
+                <p class="mt-1 text-sm text-gray-500" x-text="selectedProduct?.category"></p>
+                <p class="mt-2 text-gray-700" x-text="selectedProduct?.description"></p>
+                <div class="flex justify-between items-center mt-4">
+                    <button @click="toggleFavorite(selectedProduct?.id)" class="text-gray-400 heart-icon" :class="{'active': isFavorite(selectedProduct?.id)}">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                    </button>
+                    <button @click="addToCart(selectedProduct)" class="px-2 py-1 bg-blue-600 text-white text-sm rounded-lg">Add to Cart</button>
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- Footer -->
@@ -164,6 +200,10 @@
     </footer>
 
     <script>
+        /**
+         * SwiftCart Application to manage products, favorites, and cart.
+         * @returns {Object} Object containing methods and data for SwiftCart.
+         */
         function productApp() {
             return {
                 products: [],
@@ -176,7 +216,10 @@
                 loading: true,
                 showModal: false,
                 selectedProduct: null,
-
+    
+                /**
+                 * Fetches products from a remote API and initializes the application.
+                 */
                 fetchProducts() {
                     this.loading = true;
                     fetch('https://fakestoreapi.com/products')
@@ -188,7 +231,10 @@
                             this.filterProducts();
                         });
                 },
-
+    
+                /**
+                 * Populates the category dropdown with unique categories from the products.
+                 */
                 populateCategories() {
                     this.categories = ['All categories'];
                     this.products.forEach(product => {
@@ -198,7 +244,10 @@
                     });
                 },
     
-               filterProducts() {
+                /**
+                 * Filters products based on selected category and updates the product list.
+                 */
+                filterProducts() {
                     let filteredProducts = this.products;
                     if (this.filterItem !== 'All categories') {
                         filteredProducts = filteredProducts.filter(product => product.category === this.filterItem);
@@ -206,7 +255,10 @@
                     this.products = filteredProducts;
                     this.sortProducts();
                 },
-     
+    
+                /**
+                 * Sorts products based on the selected sorting order (price).
+                 */
                 sortProducts() {
                     if (this.sortOrder === 'low-to-high') {
                         this.products.sort((a, b) => a.price - b.price);
@@ -215,14 +267,21 @@
                     } else {
                         this.products.sort((a, b) => a.id - b.id);
                     }
-                }4,
-
+                },
+    
+                /**
+                 * Handles the search functionality to filter products by title.
+                 */
                 handleSearch() {
                     const searchTerm = this.searchTerm.toLowerCase();
                     this.products = this.products.filter(product => product.title.toLowerCase().includes(searchTerm));
                     this.filterProducts();
                 },
-
+    
+                /**
+                 * Toggles the favorite status of a product by adding/removing from favorites.
+                 * @param {number} productId - The ID of the product to toggle favorite status.
+                 */
                 toggleFavorite(productId) {
                     if (this.favorites.includes(productId)) {
                         this.favorites = this.favorites.filter(id => id !== productId);
@@ -231,27 +290,44 @@
                     }
                     localStorage.setItem('favorites', JSON.stringify(this.favorites));
                 },
-
+    
+                /**
+                 * Checks if a product is in favorites.
+                 * @param {number} productId - The ID of the product to check.
+                 * @returns {boolean} True if the product is in favorites, false otherwise.
+                 */
                 isFavorite(productId) {
                     return this.favorites.includes(productId);
                 },
     
+                /**
+                 * Adds a product to the cart.
+                 * @param {Object} product - The product object to add to the cart.
+                 */
                 addToCart(product) {
                     this.cart.push(product);
                     localStorage.setItem('cart', JSON.stringify(this.cart));
                 },
+    
+                /**
+                 * Sets the selected product and shows the modal to view its details.
+                 * @param {Object} product - The product object to view details for.
+                 */
                 viewProductDetails(product) {
                     this.selectedProduct = product;
                     this.showModal = true;
                 },
     
+                /**
+                 * Initializes the application by fetching products.
+                 */
                 init() {
                     this.fetchProducts();
                 }
             };
         }
     
-        // Initialize the app
+        // Initialize the SwiftCart application
         document.addEventListener('DOMContentLoaded', () => {
             productApp().init();
         });
