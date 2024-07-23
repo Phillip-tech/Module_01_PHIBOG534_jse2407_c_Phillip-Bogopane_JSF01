@@ -162,3 +162,17 @@
             &copy; 2024 SwiftCart. All rights reserved.
         </div>
     </footer>
+
+    <script>
+        function productApp() {
+            return {
+                products: [],
+                categories: ['All categories'],
+                favorites: JSON.parse(localStorage.getItem('favorites')) || [],
+                cart: JSON.parse(localStorage.getItem('cart')) || [],
+                searchTerm: '',
+                filterItem: 'All categories',
+                sortOrder: 'default',
+                loading: true,
+                showModal: false,
+                selectedProduct: null,
