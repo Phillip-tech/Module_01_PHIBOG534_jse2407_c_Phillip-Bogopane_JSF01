@@ -188,4 +188,22 @@
                             this.filterProducts();
                         });
                 },
+
+                populateCategories() {
+                    this.categories = ['All categories'];
+                    this.products.forEach(product => {
+                        if (!this.categories.includes(product.category)) {
+                            this.categories.push(product.category);
+                        }
+                    });
+                },
     
+               filterProducts() {
+                    let filteredProducts = this.products;
+                    if (this.filterItem !== 'All categories') {
+                        filteredProducts = filteredProducts.filter(product => product.category === this.filterItem);
+                    }
+                    this.products = filteredProducts;
+                    this.sortProducts();
+                },
+     
