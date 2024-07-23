@@ -102,7 +102,6 @@
                     <span class="sr-only">Search</span>
                 </button>
             </div>
-            
             <select x-model="filterItem" @change="fetchProducts"
                     class="p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
                     <option value="All categories">All categories</option>
@@ -111,5 +110,15 @@
                     </template>
                 </select>
             </form>
+
+            <div class="flex space-x-4">
+                <select x-model="sortOrder" @change="sortProducts"
+                    class="p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
+                    <option value="default">Default</option>
+                    <option value="low-to-high">Price: Low to High</option>
+                    <option value="high-to-low">Price: High to Low</option>
+                </select>
+            </div>
+        </div>
 
             
